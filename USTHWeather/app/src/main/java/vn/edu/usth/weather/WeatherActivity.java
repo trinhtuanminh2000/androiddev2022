@@ -19,6 +19,7 @@ public class WeatherActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(
                 R.id.main_pager, forecastFragment).commit();
         PagerAdapter adapter = new MainViewPagerAdapter(
+        this.getApplicationContext(),
                 getSupportFragmentManager()
         );
         ViewPager pager = findViewById(R.id.main_pager);
