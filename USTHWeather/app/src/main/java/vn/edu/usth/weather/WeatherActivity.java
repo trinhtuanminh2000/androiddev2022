@@ -1,7 +1,8 @@
 package vn.edu.usth.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,7 +17,14 @@ public class WeatherActivity extends AppCompatActivity {
         args.putString("bgColor", "blue");
         forecastFragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(
-                R.id.fragment_forecast, forecastFragment).commit();
+                R.id.main_pager, forecastFragment).commit();
+        PagerAdapter adapter = new MainViewPagerAdapter(
+                getSupportFragmentManager()
+        );
+        ViewPager pager = findViewById(R.id.main_pager);
+        pager.setOffscreenPageLimit(3);
+        pager.setAdapter(adapter);
+        Log.i("created", "Created Activity");
         Log.i("created", "Created Activity");
     }
 
